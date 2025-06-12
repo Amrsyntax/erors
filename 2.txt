@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>personal|data</title>
+        </head>
+        <body>
+            <h1>personal|data</h1>
+                <p> YourName</p>
+                <br>
+                <form>
+                    <div>
+                        <label> first Name :</label>
+                        <input type=" text" required placeholder="first Name"/>
+                    </div>
+                    
+                </form>
+                <form>
+                    <div>
+                        <label>SecoName :</label>
+                        <input type=" text" required placeholder="Second Name"/>
+                    </div>
+                </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>personal|data</title>
+        </head>
+        <body>
+            <h1>personal|data</h1>
+                <p> YourName</p>
+                <br>
+                <form>
+                    <div>
+                        <label> first Name :</label>
+                        <input type=" text" required placeholder="first Name"/>
+                    </div>
+                    
+                </form>
+                <form>
+                    <div>
+                        <label>SecoName :</label>
+                        <input type=" text" required placeholder="Second Name"/>
+                    </div>
+                </form>
+                <br><br><br>
+            <form>
+                        <div>
+                            <label> YourPhone:</label>
+                            <input type="number" required placeholder="YourPhone"/>
+                        </div>
+                        <!-- update Email -->
+                        <div>
+                            <label> Email ttttto:</label>
+                            <input type="email" required />
+                        </div>
+                        <div>
+                            <label>  Passwordd:</label>
+                            <input type="password" required />
+                        </div>
+                         <div>
+                        <label> r.Password:</label>
+                        <input type="re.password" required />
+                        </div>
+                    <input type="checkbox"/>
+            </form>
+        </body>
+        </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>parsonal data</legend>
+            <Label>Name:</Label>
+            <input type="text"/>
+        </fieldset>
+    </form>
+</body>
+</html>
+
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+            <h1>personal data</h1><br>
+            <form>
+                <p> YourName</p>
+                <table>
+                    <tr> 
+                        <label> first Name :</label>
+                        <input type=" text" required placeholder="first Name"/> 
+                    </tr>
+                    <br>
+                    <tr>
+                        <label> Sec. Name :</label>
+                        <input type=" text" required placeholder="Second Name"/>  
+                    </tr>
+                </table>
+            </form><br><br><br>
+            <table>
+                <tr> 
+                    <label> YourPhone :</label>
+                    <input type=" number" required placeholder="YourPhone"/> 
+                </tr>
+                <br>
+                <tr>
+                    <label> Email tooo :</label>
+                    <input type=" email" required/>  
+                </tr><br>
+                <tr>
+                    <label>  Passwordd :</label>
+                    <input type=" password" required placeholder="write A complex password"/>  
+                </tr><br>
+                <tr>
+                    <label>R.Password</label>
+                    <input type=" password" required placeholder="write A complex password"/>  
+                </tr>
+            </table>
+        </body>
+        </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Data</title>
+</head>
+<body>
+
+    <h2>Personal Data</h2>
+
+    <form>
+        <label>Your Name</label><br>
+        <label>First Name:</label>
+        <input type="text" name="first_name"/><br>
+        <label>Second Name:</label>
+        <input type="text" name="second_name" value=""><br><br>
+
+        <label>Your Phone:</label>
+        <input type="text" name="phone"><br>
+        <label>Email:</label>
+        <input type="email" name="email"><br>
+        <label>Password:</label>
+        <input type="password" name="password"><br>
+        <label>Re-enter Password:</label>
+        <input type="password" name="repassword"><br><br>
+
+        <label>Gender:</label><br>
+        <input type="radio" name="gender" value="male"> Male <br>
+        <input type="radio" name="gender" value="female"> Female <br><br>
+
+        <label>Status:</label><br>
+        <input type="checkbox" name="status" value="student"> Student <br>
+        <input type="checkbox" name="status" value="graduated"> Graduated <br><br>
+
+        <label>University:</label>
+        <select name="university">
+            <option value="AUC">AUC</option>
+            <option value="Cairo University">Cairo University</option>
+            <option value="Ain Shams">Ain Shams</option>
+        </select><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
+<fieldset>
+            <div #id="personalData">
+                <legend>YourName</legend>
+                <label>FirstName:</label>
+                <input type="text" required name="user"/><br>
+                <label>secondName:</label>
+                <input type="text" required name="user"/>
+            </div>
+         </fieldset>
