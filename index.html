@@ -1,54 +1,476 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>personal|data</title>
+    <title>مدير الإشارات المرجعية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        h1 i {
+            color: #FFD43B;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .form-container {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus {
+            border-color: #4b6cb7;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(75, 108, 183, 0.2);
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .input-group > div {
+            flex: 1;
+        }
+        
+        button {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        thead {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+        }
+        
+        th {
+            padding: 18px 15px;
+            text-align: right;
+            font-weight: 600;
+        }
+        
+        tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s ease;
+        }
+        
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+        
+        tbody tr:hover {
+            background: #f8f9ff;
+        }
+        
+        td {
+            padding: 15px;
+            color: #2c3e50;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        
+        .action-btn {
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .visit {
+            background: linear-gradient(90deg, #00b09b 0%, #96c93d 100%);
+        }
+        
+        .delete {
+            background: linear-gradient(90deg, #ff416c 0%, #ff4b2b 100%);
+        }
+        
+        .empty-message {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .empty-message i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #bdc3c7;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-size: 1rem;
+            margin-top: auto;
+        }
+        
+        .counter {
+            background: white;
+            color: #4b6cb7;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-left: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .input-group {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                margin: 15px auto;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: cornflowerblue;">
-<fieldset>
-    <legend style="background-color: grey;">personal Data</legend><br>
-     <form method="POST">
-         <fieldset>
-             <legend style="background-color: grey;">YourName</legend><br>
-             <label>firstName:</label>
-             <input type="text" name="firstName" value="Amr"/><br> 
-             <label>sec.Name:</label>
-             <input type="text" name="sec.Name" value="Shabaan"/>
-         </fieldset>
-         <br><br>
-          <label> Your Phone:</label>
-            <input type="text" name="phone"><br>
-            <label>Emailtoooo:</label>
-            <input type="email" name="email"><br>
-            <label> Passworddd:</label>
-            <input type="password" name="password"><br>
-            <label>R-Password:</label>
-            <input type="psword" name="repassword"><br><br><br>
-            <fieldset>
-                <legend>gender</legend>
-                    <label>male</label>
-                     <input type="radio" name="gender" value="female"/>
-                    <label>female</label>
-                    <input type="radio" name="gender" value="fmale"/>
-            </fieldset><br><br>
-            <fieldset>
-           <legend>status</legend> 
-           <Label>student</Label>
-           <input type="checkbox" name="status" value="student"/><br>
-           <Label>graduated</Label>
-           <input type="checkbox" name="status" value="graduated"/>
-         </fieldset>
-         <br>
-         <label>University:</label>
-        <select name="university">
-            <option value="AUC">AUC</option>
-            <option value="Cairo University">Cairo University</option>
-            <option value="Ain Shams">Ain Shams</option>
-        </select><br><br>
-
-        <input type="submit" value="Submit">
-     </form>
-    </fieldset>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-bookmark"></i> مدير الإشارات المرجعية</h1>
+            <p class="subtitle">أضف مواقعك المفضلة، زُرْها متى شئت، واحذف ما لم يعد مفيداً. كل هذا في مكان واحد!</p>
+        </header>
+        
+        <div class="form-container">
+            <div class="form-group">
+                <label for="name"><i class="fas fa-bookmark"></i> اسم الإشارة المرجعية</label>
+                <input type="text" id="name" placeholder="أدخل اسم الموقع المفضل لديك">
+                <div class="error" id="name-error">يجب إدخال اسم للإشارة المرجعية (3 أحرف على الأقل)</div>
+            </div>
+            
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="url"><i class="fas fa-link"></i> رابط الموقع</label>
+                    <input type="text" id="url" placeholder="https://example.com">
+                    <div class="error" id="url-error">الرجاء إدخال رابط صحيح يبدأ بـ http:// أو https://</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category"><i class="fas fa-folder"></i> التصنيف (اختياري)</label>
+                    <input type="text" id="category" placeholder="مثال: تعليم، تسوق، أخبار">
+                </div>
+            </div>
+            
+            <button id="add-btn">
+                <i class="fas fa-plus-circle"></i> إضافة إشارة مرجعية
+            </button>
+        </div>
+        
+        <div class="table-container">
+            <h2><i class="fas fa-book"></i> مكتبة الإشارات المرجعية <span class="counter" id="counter">0</span></h2>
+            
+            <div id="bookmarks-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="30%">الاسم</th>
+                            <th width="25%">التصنيف</th>
+                            <th width="30%">الرابط</th>
+                            <th width="15%">الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookmarks-list">
+                        <!-- سيتم ملء هذا القسم بالجافاسكربت -->
+                    </tbody>
+                </table>
+                <div class="empty-message" id="empty-message">
+                    <i class="fas fa-book-open"></i>
+                    <h3>لا توجد إشارات مرجعية بعد</h3>
+                    <p>ابدأ بإضافة إشارات مرجعية جديدة لتراها هنا</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>تم التطوير بحب ❤️ | تخصيص لـ CRUD Operations Assignment | &copy; 2023</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // عناصر DOM
+            const nameInput = document.getElementById('name');
+            const urlInput = document.getElementById('url');
+            const categoryInput = document.getElementById('category');
+            const addButton = document.getElementById('add-btn');
+            const bookmarksList = document.getElementById('bookmarks-list');
+            const emptyMessage = document.getElementById('empty-message');
+            const nameError = document.getElementById('name-error');
+            const urlError = document.getElementById('url-error');
+            const counter = document.getElementById('counter');
+            
+            // مصفوفة لحفظ الإشارات المرجعية
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            
+            // تحديث العداد وعرض الإشارات المرجعية
+            function updateCounter() {
+                counter.textContent = bookmarks.length;
+            }
+            
+            // التحقق من صحة الرابط
+            function isValidUrl(url) {
+                try {
+                    new URL(url);
+                    return true;
+                } catch (e) {
+                    return false;
+                }
+            }
+            
+            // التحقق من صحة المدخلات
+            function validateInputs() {
+                let isValid = true;
+                
+                // التحقق من اسم الإشارة المرجعية
+                if (nameInput.value.trim().length < 3) {
+                    nameError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    nameError.style.display = 'none';
+                }
+                
+                // التحقق من صحة الرابط
+                if (!isValidUrl(urlInput.value.trim())) {
+                    urlError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    urlError.style.display = 'none';
+                }
+                
+                return isValid;
+            }
+            
+            // إضافة إشارة مرجعية جديدة
+            function addBookmark() {
+                if (!validateInputs()) return;
+                
+                const newBookmark = {
+                    id: Date.now(),
+                    name: nameInput.value.trim(),
+                    url: urlInput.value.trim(),
+                    category: categoryInput.value.trim() || 'عام'
+                };
+                
+                bookmarks.push(newBookmark);
+                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+                
+                // مسح حقول الإدخال
+                nameInput.value = '';
+                urlInput.value = '';
+                categoryInput.value = '';
+                
+                renderBookmarks();
+            }
+            
+            // حذف إشارة مرجعية
+            function deleteBookmark(id) {
+                bookmarks = bookmarks.filter(bookmark => bookmark.id !== id);
+                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+                renderBookmarks();
+            }
+            
+            // زيارة موقع الإشارة المرجعية
+            function visitBookmark(url) {
+                window.open(url, '_blank');
+            }
+            
+            // عرض الإشارات المرجعية
+            function renderBookmarks() {
+                // تحديث العداد
+                updateCounter();
+                
+                // إخفاء أو إظهار رسالة عدم وجود إشارات
+                if (bookmarks.length === 0) {
+                    emptyMessage.style.display = 'block';
+                    return;
+                } else {
+                    emptyMessage.style.display = 'none';
+                }
+                
+                // إنشاء صفوف الجدول
+                bookmarksList.innerHTML = '';
+                bookmarks.forEach(bookmark => {
+                    const row = document.createElement('tr');
+                    
+                    // اختصار الروابط الطويلة
+                    let displayUrl = bookmark.url;
+                    if (displayUrl.length > 30) {
+                        displayUrl = displayUrl.substring(0, 30) + '...';
+                    }
+                    
+                    row.innerHTML = `
+                        <td>${bookmark.name}</td>
+                        <td>${bookmark.category}</td>
+                        <td><a href="${bookmark.url}" target="_blank">${displayUrl}</a></td>
+                        <td class="actions">
+                            <button class="action-btn visit" onclick="visitBookmark('${bookmark.url}')">
+                                <i class="fas fa-external-link-alt"></i> زيارة
+                            </button>
+                            <button class="action-btn delete" onclick="deleteBookmark(${bookmark.id})">
+                                <i class="fas fa-trash-alt"></i> حذف
+                            </button>
+                        </td>
+                    `;
+                    
+                    bookmarksList.appendChild(row);
+                });
+            }
+            
+            // إضافة مستمعي الأحداث
+            addButton.addEventListener('click', addBookmark);
+            
+            // السماح بإضافة الإشارة المرجعية بالضغط على Enter
+            nameInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') addBookmark();
+            });
+            
+            urlInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') addBookmark();
+            });
+            
+            categoryInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') addBookmark();
+            });
+            
+            // التهيئة الأولية
+            renderBookmarks();
+            
+            // جعل الدوال متاحة في النطاق العام لاستخدامها في الأحداث
+            window.visitBookmark = visitBookmark;
+            window.deleteBookmark = deleteBookmark;
+        });
+    </script>
 </body>
 </html>

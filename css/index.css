@@ -1,0 +1,18 @@
+.btn{
+    border-radius: 50px;
+    border: solid white 5px;
+}
+.oppo span{
+    padding: 10px;
+}
+.icon-circle{
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    border:  solid 3px #6495ed;
+    transition: all 1s;
+}
+.icon-circle :hover{
+    color: #11acea;
+    border:  solid 3px #6495ed;
+}
